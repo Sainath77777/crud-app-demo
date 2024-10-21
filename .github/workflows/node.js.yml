@@ -24,7 +24,12 @@ jobs:
     - run: npm run build 
 
     - name: check build directory
-      run: ls -la build/
+      run: |
+        pwd
+        ls -la build/
+        
+    - name: whereis build
+      run: find build/
   deploy:
     needs: build
     runs-on: ubuntu-latest

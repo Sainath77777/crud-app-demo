@@ -21,12 +21,14 @@ jobs:
       with:
         node-version: ' 16.x'
     - run: npm install
+    - name: List before directory contents
+      run: ls -la
     - run: npm run build 
 
-    - name: check build directory
+    - name: check after build directory
       run: |
         pwd
-        ls -la build/
+        ls -la 
         
     - name: whereis build
       run: find build/

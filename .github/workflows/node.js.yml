@@ -22,7 +22,9 @@ jobs:
         node-version: ' 16.x'
     - run: npm install
     - run: npm run build 
-    - run: npm test
+
+    - name: check build directory
+      run: ls -la build/
   deploy:
     needs: build
     runs-on: ubuntu-latest

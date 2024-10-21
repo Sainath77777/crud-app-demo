@@ -46,9 +46,7 @@ jobs:
           name: build
         
       - name: List directory contents
-        run: ls -la
-      - name: change directory contents
-        run: cd build
+        run: ls 
       - name: List directory contents
         run: ls -la
         

@@ -24,14 +24,12 @@ jobs:
     - name: List before directory contents
       run: ls -la
     - run: npm run build 
-
-    - name: check after build directory
-      run: |
-        pwd
-        ls -la 
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: build
+        path: build
         
-    - name: whereis build
-      run: find build/
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -39,6 +37,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
         
       - name: List directory contents
         run: ls -la
